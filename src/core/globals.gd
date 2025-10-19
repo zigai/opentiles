@@ -1,0 +1,62 @@
+extends Node
+
+enum GameMode {
+	FRENZY,
+	KEYBOARD,
+	NUMPAD,
+	MOVING_BASIC,
+	MOVING_SPRINT
+}
+
+enum PenaltyType {
+	INSTANT_DEATH,
+	RESET_MULTIPLIER,
+	LOSE_POINTS,
+	LIVES
+}
+
+enum ObjectiveType {
+	TIMER,
+	POINTS
+}
+
+enum GameOverCause {
+	UNKNOWN,
+	TIME_OUT,
+	WRONG_TILE,
+	LIVES_DEPLETED
+}
+
+enum TilePlacerType {
+	INSTANT, DELAYED
+}
+
+enum MovingPlacerType {
+	SIMPLE,
+	PATTERNED
+}
+
+enum MovingScoreType {
+	TIME,
+	POINTS
+}
+
+var TILE_SPACING: float = 1
+var START_COUNTDOWN_DURATION: float = 3
+var TILE_CLICK_INDICATOR_TIME: float = 0.10
+
+var GAME_START_COUNTDOWN_TIME: int = 3
+var GAME_START_COUNTDOWN_COLOR: Color = Color.RED
+var GAME_START_COUNTDOWN_FONT_SIZE: int = 220
+
+var TILE_COLOR_CORRECT: Color = Color.LIME_GREEN
+var TILE_COLOR_WRONG: Color = Color.RED
+var TILE_COLOR_WHITE: Color = Color.WHITE
+var TILE_COLOR_BLACK: Color = Color.BLACK
+
+var DEFAULT_TIME_LIMIT: float = 10
+var DEFAULT_POINTS_GOAL: int = 500
+
+var GRID_TOP_MARGIN_RATIO: float = 0.18
+var GRID_BOTTOM_MARGIN_RATIO: float = 0.12
+var GRID_HORIZONTAL_MARGIN_RATIO: float = 0.08

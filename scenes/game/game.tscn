@@ -1,0 +1,154 @@
+[gd_scene load_steps=4 format=3 uid="uid://c13nxien0vw06"]
+
+[ext_resource type="Script" uid="uid://b2x0ix40m3fs2" path="res://scenes/game/game_controller.gd" id="1_game_controller"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_StatTitle"]
+font_size = 28
+font_color = Color(0.160784, 0.2, 0.282353, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_StatValue"]
+font_size = 72
+font_color = Color(0.07, 0.07, 0.09, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_StatsCard"]
+bg_color = Color(1, 1, 1, 0.92)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0, 0, 0, 0.1)
+shadow_size = 16
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game_controller")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.92549, 0.960784, 1, 1)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 1
+
+[node name="Root" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Layout" type="VBoxContainer" parent="HUD/Root"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.08
+anchor_right = 0.9
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 0
+theme_override_constants/separation = 32
+metadata/_edit_use_anchors_ = true
+
+[node name="StatsCard" type="Panel" parent="HUD/Root/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_StatsCard")
+
+[node name="Margin" type="MarginContainer" parent="HUD/Root/Layout/StatsCard"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 32
+
+[node name="StatsGrid" type="GridContainer" parent="HUD/Root/Layout/StatsCard/Margin"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+theme_override_constants/h_separation = 48
+theme_override_constants/v_separation = 12
+
+[node name="ScoreStat" type="VBoxContainer" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Title" type="Label" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid/ScoreStat"]
+layout_mode = 2
+text = "SCORE"
+label_settings = SubResource("LabelSettings_StatTitle")
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid/ScoreStat"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_StatValue")
+horizontal_alignment = 1
+
+[node name="TimeStat" type="VBoxContainer" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Title" type="Label" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid/TimeStat"]
+layout_mode = 2
+text = "TIME"
+label_settings = SubResource("LabelSettings_StatTitle")
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid/TimeStat"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "--:--"
+label_settings = SubResource("LabelSettings_StatValue")
+horizontal_alignment = 1
+
+[node name="MultiplierStat" type="VBoxContainer" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Title" type="Label" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid/MultiplierStat"]
+layout_mode = 2
+text = "MULT"
+label_settings = SubResource("LabelSettings_StatTitle")
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid/MultiplierStat"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "x1"
+label_settings = SubResource("LabelSettings_StatValue")
+horizontal_alignment = 1
+
+[node name="BestStat" type="VBoxContainer" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Title" type="Label" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid/BestStat"]
+layout_mode = 2
+text = "BEST"
+label_settings = SubResource("LabelSettings_StatTitle")
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="HUD/Root/Layout/StatsCard/Margin/StatsGrid/BestStat"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_StatValue")
+horizontal_alignment = 1
